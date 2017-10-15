@@ -1,10 +1,17 @@
 import test from 'ava';
 import Dollar from './Dollar';
+import Franc from './Franc';
 
 test('multiplication', async (t) => {
   const five = new Dollar(5);
   t.true(new Dollar(10).equals(five.times(2)));
   t.true(new Dollar(15).equals(five.times(3)));
+});
+
+test('franc multiplication', async (t) => {
+  const five = new Franc(5);
+  t.true(new Franc(10).equals(five.times(2)));
+  t.true(new Franc(15).equals(five.times(3)));
 });
 
 test('equality', async (t) => {
