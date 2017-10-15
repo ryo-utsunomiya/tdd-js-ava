@@ -1,5 +1,6 @@
 import test from 'ava';
+import foo from './foo';
 
-test('foo', t => {
-  t.pass();
+test('test foo()', t => {
+  t.is(foo(), 'foo');
 });
