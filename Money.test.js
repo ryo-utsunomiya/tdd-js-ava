@@ -16,4 +16,7 @@ test('franc multiplication', async (t) => {
 
 test('equality', async (t) => {
   t.true(new Dollar(5).equals(new Dollar(5)));
+  t.false(new Dollar(5).equals(new Dollar(6)));
+  t.true(new Franc(5).equals(new Franc(5)));
+  t.false(new Franc(5).equals(new Franc(6)));
 });
