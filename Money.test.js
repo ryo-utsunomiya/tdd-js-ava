@@ -1,5 +1,6 @@
 import test from 'ava';
 import Money from './Money';
+import Bank from './Bank';
 
 test('multiplication', (t) => {
   const five = Money.dollar(5);
@@ -16,4 +17,12 @@ test('equality', (t) => {
 test('currency', (t) => {
   t.is(Money.dollar(1).currency, 'USD');
   t.is(Money.franc(1).currency, 'CHF');
+});
+
+test('simple addition', (t) => {
+  const five = Money.dollar(5);
+  const sum = five.plus(five);
+  const bank = new Bank();
+  const reduced = bank.reduce(sum, 'USD');
+  t.true(reduced.equals(Money.dollar(10)));
 });
