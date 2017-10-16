@@ -1,6 +1,7 @@
 export default class Money {
-  constructor(amount) {
+  constructor(amount, currency) {
     this.amount = amount;
+    this.currency = currency;
   }
 
   equals(money) {
@@ -9,11 +10,11 @@ export default class Money {
   }
 
   static dollar(amount) {
-    return new Dollar(amount);
+    return new Dollar(amount, 'USD');
   }
 
   static franc(amount) {
-    return new Franc(amount);
+    return new Franc(amount, 'CHF');
   }
 }
 
