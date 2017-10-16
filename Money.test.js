@@ -47,3 +47,14 @@ test('reduce money', (t) => {
   const result = bank.reduce(Money.dollar(1), 'USD');
   t.true(result.equals(Money.dollar(1)));
 });
+
+test('reduce money different currency', (t) => {
+  const bank = new Bank();
+  bank.addRate('CHF', 'USD', 2);
+  const result = bank.reduce(Money.dollar(1), 'USD');
+  t.true(result.equals(Money.dollar(1)));
+});
+
+test('identity rate', (t) => {
+  t.is(new Bank().rate('USD', 'USD'), 1);
+});
