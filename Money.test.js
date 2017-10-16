@@ -58,3 +58,12 @@ test('reduce money different currency', (t) => {
 test('identity rate', (t) => {
   t.is(new Bank().rate('USD', 'USD'), 1);
 });
+
+test('mixed addition', (t) => {
+  const fiveBucks = Money.dollar(5);
+  const tenFrancs = Money.franc(10);
+  const bank = new Bank();
+  bank.addRate('CHF', 'USD', 2);
+  const result = bank.reduce(fiveBucks.plus(tenFrancs), 'USD');
+  t.true(result.equals(Money.dollar(10)));
+});
