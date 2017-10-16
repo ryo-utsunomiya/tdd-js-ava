@@ -1,4 +1,4 @@
-export class Money {
+export default class Money {
   constructor(amount, currency) {
     this.amount = amount;
     this.currency = currency;
@@ -21,10 +21,4 @@ export class Money {
   static franc(amount) {
     return new Money(amount, 'CHF');
   }
-}
-
-export class Franc extends Money {
-}
-
-export class Dollar extends Money {
 }
