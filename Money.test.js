@@ -1,23 +1,22 @@
 import test from 'ava';
-import Dollar from './Dollar';
-import Franc from './Franc';
+import Money from './Money';
 
-test('multiplication', async (t) => {
-  const five = new Dollar(5);
-  t.true(new Dollar(10).equals(five.times(2)));
-  t.true(new Dollar(15).equals(five.times(3)));
+test('multiplication', (t) => {
+  const five = Money.dollar(5);
+  t.true(Money.dollar(10).equals(five.times(2)));
+  t.true(Money.dollar(15).equals(five.times(3)));
 });
 
-test('franc multiplication', async (t) => {
-  const five = new Franc(5);
-  t.true(new Franc(10).equals(five.times(2)));
-  t.true(new Franc(15).equals(five.times(3)));
+test('franc multiplication', (t) => {
+  const five = Money.franc(5);
+  t.true(Money.franc(10).equals(five.times(2)));
+  t.true(Money.franc(15).equals(five.times(3)));
 });
 
-test('equality', async (t) => {
-  t.true(new Dollar(5).equals(new Dollar(5)));
-  t.false(new Dollar(5).equals(new Dollar(6)));
-  t.true(new Franc(5).equals(new Franc(5)));
-  t.false(new Franc(5).equals(new Franc(6)));
-  t.false(new Franc(5).equals(new Dollar(5)));
+test('equality', (t) => {
+  t.true(Money.dollar(5).equals(Money.dollar(5)));
+  t.false(Money.dollar(5).equals(Money.dollar(6)));
+  t.true(Money.franc(5).equals(Money.franc(5)));
+  t.false(Money.franc(5).equals(Money.franc(6)));
+  t.false(Money.franc(5).equals(Money.dollar(5)));
 });
