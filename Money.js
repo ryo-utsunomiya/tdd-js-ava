@@ -1,4 +1,4 @@
-export default class Money {
+export class Money {
   constructor(amount, currency) {
     this.amount = amount;
     this.currency = currency;
@@ -6,26 +6,25 @@ export default class Money {
 
   equals(money) {
     return this.amount === money.amount
-      && this.constructor.name === money.constructor.name;
+      && this.currency === money.currency;
   }
 
+  times(multiplier) {
+    return new Money(this.amount * multiplier, this.currency);
+  }
+
+
   static dollar(amount) {
-    return new Dollar(amount, 'USD');
+    return new Money(amount, 'USD');
   }
 
   static franc(amount) {
-    return new Franc(amount, 'CHF');
+    return new Money(amount, 'CHF');
   }
 }
 
-class Franc extends Money {
-  times(multiplier) {
-    return Money.franc(this.amount * multiplier);
-  }
+export class Franc extends Money {
 }
 
-class Dollar extends Money {
-  times(multiplier) {
-    return Money.dollar(this.amount * multiplier);
-  }
+export class Dollar extends Money {
 }

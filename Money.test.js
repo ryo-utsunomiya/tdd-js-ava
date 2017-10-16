@@ -1,5 +1,5 @@
 import test from 'ava';
-import Money from './Money';
+import { Money, Franc } from './Money';
 
 test('multiplication', (t) => {
   const five = Money.dollar(5);
@@ -24,4 +24,8 @@ test('equality', (t) => {
 test('currency', (t) => {
   t.is(Money.dollar(1).currency, 'USD');
   t.is(Money.franc(1).currency, 'CHF');
+});
+
+test('different class equality', (t) => {
+  t.true(new Money(10, 'CHF').equals(new Franc(10, 'CHF')));
 });
