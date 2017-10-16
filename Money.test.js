@@ -1,6 +1,7 @@
 import test from 'ava';
 import Money from './Money';
 import Bank from './Bank';
+import Sum from './Sum';
 
 test('multiplication', (t) => {
   const five = Money.dollar(5);
@@ -25,4 +26,24 @@ test('simple addition', (t) => {
   const bank = new Bank();
   const reduced = bank.reduce(sum, 'USD');
   t.true(reduced.equals(Money.dollar(10)));
+});
+
+test('plus returns Sum', (t) => {
+  const five = Money.dollar(5);
+  const sum = five.plus(five);
+  t.is(five, sum.augend);
+  t.is(five, sum.addend);
+});
+
+test('reduce sum', (t) => {
+  const sum = new Sum(Money.dollar(3), Money.dollar(4));
+  const bank = new Bank();
+  const result = bank.reduce(sum, 'USD');
+  t.true(Money.dollar(7).equals(result));
+});
+
+test('reduce money', (t) => {
+  const bank = new Bank();
+  const result = bank.reduce(Money.dollar(1), 'USD');
+  t.true(result.equals(Money.dollar(1)));
 });

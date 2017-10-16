@@ -1,3 +1,5 @@
+import Sum from './Sum';
+
 export default class Money {
   constructor(amount, currency) {
     this.amount = amount;
@@ -14,7 +16,11 @@ export default class Money {
   }
 
   plus(addend) {
-    return new Money(this.amount + addend.amount, this.currency);
+    return new Sum(this, addend);
+  }
+
+  reduce() {
+    return this;
   }
 
   static dollar(amount) {
